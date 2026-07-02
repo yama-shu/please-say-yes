@@ -1,0 +1,18 @@
+.app {
+  min-height: 100svh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  /* 「中央やや上」の配置: 下側の余白を厚くして全体を上に寄せる */
+  padding: 1rem 1rem 18svh;
+}
+
+.question {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
+  text-align: center;
+}
