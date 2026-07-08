@@ -47,10 +47,12 @@ npm run build    # 型チェック（tsc）+ 本番ビルド → dist/ に出力
 npm run preview  # dist/ の内容をローカルで配信して確認
 ```
 
-## Lint
+## Lint / Format
 
 ```bash
-npm run lint
+npm run lint          # oxlint による静的チェック
+npm run format        # Prettier で一括整形
+npm run format:check  # 整形済みかの検査のみ（CI 用）
 ```
 
 ## 設定方法
