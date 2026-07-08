@@ -57,3 +57,13 @@
   color: #1f2933;
   background: #e5e7eb;
 }
+
+/* 開発モード限定のデバッグ表示（本番ビルドには含まれない） */
+.debug-count {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.75rem;
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
