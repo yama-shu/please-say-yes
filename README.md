@@ -13,12 +13,12 @@
 
 ## 使用技術
 
-| 技術 | バージョン | 用途 |
-|------|-----------|------|
-| [React](https://react.dev/) | 19.x | UI（押下回数に応じた状態管理） |
-| [TypeScript](https://www.typescriptlang.org/) | 6.x | 型付け |
-| [Vite](https://vite.dev/) | 8.x | 開発サーバ・ビルド |
-| [oxlint](https://oxc.rs/) | 1.x | Lint |
+| 技術                                          | バージョン | 用途                           |
+| --------------------------------------------- | ---------- | ------------------------------ |
+| [React](https://react.dev/)                   | 19.x       | UI（押下回数に応じた状態管理） |
+| [TypeScript](https://www.typescriptlang.org/) | 6.x        | 型付け                         |
+| [Vite](https://vite.dev/)                     | 8.x        | 開発サーバ・ビルド             |
+| [oxlint](https://oxc.rs/)                     | 1.x        | Lint                           |
 
 技術選定の経緯（候補比較・不採用理由）は [Issue #3](https://github.com/yama-shu/please-say-yes/issues/3) に記録しています。
 
@@ -47,10 +47,12 @@ npm run build    # 型チェック（tsc）+ 本番ビルド → dist/ に出力
 npm run preview  # dist/ の内容をローカルで配信して確認
 ```
 
-## Lint
+## Lint / Format
 
 ```bash
-npm run lint
+npm run lint          # oxlint による静的チェック
+npm run format        # Prettier で一括整形
+npm run format:check  # 整形済みかの検査のみ（CI 用）
 ```
 
 ## 設定方法
@@ -58,13 +60,13 @@ npm run lint
 文言と「はい」ボタンの拡大係数を、環境変数（ビルド時に読み込み）で変更できます。
 すべて任意で、未設定の場合はデフォルト値が使われます。
 
-| 環境変数 | 内容 | デフォルト |
-|----------|------|-----------|
-| `VITE_QUESTION_TEXT` | 質問文 | 「はい」と言ってくれますか？ |
-| `VITE_COMPLETE_TEXT` | 完了画面のメッセージ | ありがとう。そう言ってくれると思ってた。 |
-| `VITE_YES_INITIAL_RATIO` | 「はい」の初期サイズ（ビューポート比 0〜1） | 0.12 |
-| `VITE_YES_GROWTH_RATE` | 1 押下ごとの拡大倍率（> 1） | 1.4 |
-| `VITE_YES_MAX_RATIO` | 拡大の上限（ビューポート比。1 = 画面全体） | 1 |
+| 環境変数                 | 内容                                        | デフォルト                               |
+| ------------------------ | ------------------------------------------- | ---------------------------------------- |
+| `VITE_QUESTION_TEXT`     | 質問文                                      | 「はい」と言ってくれますか？             |
+| `VITE_COMPLETE_TEXT`     | 完了画面のメッセージ                        | ありがとう。そう言ってくれると思ってた。 |
+| `VITE_YES_INITIAL_RATIO` | 「はい」の初期サイズ（ビューポート比 0〜1） | 0.12                                     |
+| `VITE_YES_GROWTH_RATE`   | 1 押下ごとの拡大倍率（> 1）                 | 1.4                                      |
+| `VITE_YES_MAX_RATIO`     | 拡大の上限（ビューポート比。1 = 画面全体）  | 1                                        |
 
 設定方法は 2 通りです（詳細は [.env.example](.env.example) を参照）:
 
