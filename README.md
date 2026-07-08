@@ -82,8 +82,14 @@ VITE_YES_GROWTH_RATE=2.0 npm run dev
 
 ## テスト
 
-テストは未整備です。
-（サイズ再計算ロジックの単体テストを追加予定 → [Issue #25](https://github.com/yama-shu/please-say-yes/issues/25)）
+[Vitest](https://vitest.dev/) による単体テストがあります（対象: サイズ再計算ロジック）。
+
+```bash
+npm test            # 一括実行
+npm run test:watch  # watch モード
+```
+
+テストケースの設計（境界値分析）は [Issue #25](https://github.com/yama-shu/please-say-yes/issues/25) に記録しています。
 
 ## リリース方法
 
