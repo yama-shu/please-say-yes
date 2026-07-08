@@ -11,11 +11,16 @@ import { calcYesButtonRatio } from './lib/yesButtonSize'
 type Phase = 'asking' | 'completed'
 
 function App() {
-  const { noCount, countNo } = useNoCount()
+  const { noCount, countNo, resetNoCount } = useNoCount()
   const [phase, setPhase] = useState<Phase>('asking')
   const yesRatio = calcYesButtonRatio(noCount, yesButtonGrowth)
 
   const handleYes = () => setPhase('completed')
+
+  const handleRetry = () => {
+    resetNoCount()
+    setPhase('asking')
+  }
 
   return (
     <main className="app">
@@ -25,7 +30,7 @@ function App() {
           <YesNoButtons onYes={handleYes} onNo={countNo} yesRatio={yesRatio} />
         </>
       ) : (
-        <CompleteScreen message={completeText} />
+        <CompleteScreen message={completeText} onRetry={handleRetry} />
       )}
       {import.meta.env.DEV && (
         <p className="debug-count">いいえ押下回数: {noCount}</p>
