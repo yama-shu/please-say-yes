@@ -16,3 +16,44 @@
   font-weight: 600;
   text-align: center;
 }
+
+.answers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* サイズは #17 で「はい」だけ動的に変えるため、ボタン個別に上書きできる構造にしている */
+.answer-button {
+  font-family: inherit;
+  font-size: 1.25rem;
+  padding: 0.75rem 2.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.1s,
+    filter 0.15s;
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+  &:active {
+    transform: scale(0.97);
+  }
+  &:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+}
+
+.answer-button.yes {
+  color: #ffffff;
+  background: #2563eb;
+}
+
+.answer-button.no {
+  color: #1f2933;
+  background: #e5e7eb;
+}
