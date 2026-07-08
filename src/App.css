@@ -22,6 +22,8 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  /* 「はい」が育ってきたら「いいえ」は下に折り返す */
+  flex-wrap: wrap;
 }
 
 /* サイズは #17 で「はい」だけ動的に変えるため、ボタン個別に上書きできる構造にしている */
@@ -48,9 +50,27 @@
   }
 }
 
+/*
+ * 「はい」のサイズは --yes-ratio（ビューポートに対する割合 0〜1）で決まる。
+ * min-width / min-height で押し広げ、フォントも追従させる。
+ * ratio が小さいうちは padding（em ベース）由来の通常サイズが勝つため
+ * 初期状態の見た目は変わらず、ratio = 1 でビューポート全面に達する。
+ */
 .answer-button.yes {
+  --yes-ratio: 0;
   color: #ffffff;
   background: #2563eb;
+  min-width: calc(var(--yes-ratio) * 100svw);
+  min-height: calc(var(--yes-ratio) * 100svh);
+  font-size: max(1.25rem, calc(var(--yes-ratio) * 8rem));
+  padding: 0.6em 2em;
+  box-sizing: border-box;
+  transition:
+    min-width 0.25s ease-out,
+    min-height 0.25s ease-out,
+    font-size 0.25s ease-out,
+    transform 0.1s,
+    filter 0.15s;
 }
 
 .answer-button.no {
