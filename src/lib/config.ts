@@ -11,14 +11,18 @@ export const questionText: string =
 
 /** 完了画面に表示するメッセージ */
 export const completeText: string =
-  import.meta.env.VITE_COMPLETE_TEXT ?? 'ありがとう。そう言ってくれると思ってた。'
+  import.meta.env.VITE_COMPLETE_TEXT ??
+  'ありがとう。そう言ってくれると思ってた。'
 
 /**
  * 環境変数から正の数値を読む。
  * 未設定・数値でない・0 以下の場合はデフォルト値にフォールバックし、
  * 不正な設定でアプリが壊れないようにする。
  */
-function envPositiveNumber(value: string | undefined, fallback: number): number {
+function envPositiveNumber(
+  value: string | undefined,
+  fallback: number,
+): number {
   if (value === undefined) return fallback
   const parsed = Number(value)
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback
