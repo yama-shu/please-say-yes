@@ -12,5 +12,9 @@ export function useNoCount() {
     setNoCount((count) => count + 1)
   }, [])
 
-  return { noCount, countNo }
+  const resetNoCount = useCallback(() => {
+    setNoCount(0)
+  }, [])
+
+  return { noCount, countNo, resetNoCount }
 }

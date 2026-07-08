@@ -9,6 +9,10 @@ import type { GrowthParams } from './yesButtonSize'
 export const questionText: string =
   import.meta.env.VITE_QUESTION_TEXT ?? '「はい」と言ってくれますか？'
 
+/** 完了画面に表示するメッセージ */
+export const completeText: string =
+  import.meta.env.VITE_COMPLETE_TEXT ?? 'ありがとう。そう言ってくれると思ってた。'
+
 /**
  * 「はい」ボタン拡大の係数（環境変数への外出しは #18 で対応）。
  * initialRatio 0.12 × growthRate 1.4 の場合、7 回の「いいえ」で上限（画面全体）に達する。

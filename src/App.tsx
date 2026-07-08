@@ -1,21 +1,37 @@
+import { useState } from 'react'
 import './App.css'
+import { CompleteScreen } from './components/CompleteScreen'
 import { QuestionText } from './components/QuestionText'
 import { YesNoButtons } from './components/YesNoButtons'
 import { useNoCount } from './hooks/useNoCount'
-import { questionText, yesButtonGrowth } from './lib/config'
+import { completeText, questionText, yesButtonGrowth } from './lib/config'
 import { calcYesButtonRatio } from './lib/yesButtonSize'
 
+/** 画面の状態。演出フェーズ（#22 #24）で増える可能性があるためユニオン型で持つ */
+type Phase = 'asking' | 'completed'
+
 function App() {
-  const { noCount, countNo } = useNoCount()
+  const { noCount, countNo, resetNoCount } = useNoCount()
+  const [phase, setPhase] = useState<Phase>('asking')
   const yesRatio = calcYesButtonRatio(noCount, yesButtonGrowth)
 
-  // 「はい」押下時の完了画面への遷移は #19 で実装する
-  const handleYes = () => {}
+  const handleYes = () => setPhase('completed')
+
+  const handleRetry = () => {
+    resetNoCount()
+    setPhase('asking')
+  }
 
   return (
     <main className="app">
-      <QuestionText text={questionText} />
-      <YesNoButtons onYes={handleYes} onNo={countNo} yesRatio={yesRatio} />
+      {phase === 'asking' ? (
+        <>
+          <QuestionText text={questionText} />
+          <YesNoButtons onYes={handleYes} onNo={countNo} yesRatio={yesRatio} />
+        </>
+      ) : (
+        <CompleteScreen message={completeText} onRetry={handleRetry} />
+      )}
       {import.meta.env.DEV && (
         <p className="debug-count">いいえ押下回数: {noCount}</p>
       )}

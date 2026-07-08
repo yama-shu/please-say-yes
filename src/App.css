@@ -78,6 +78,39 @@
   background: #e5e7eb;
 }
 
+.complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.complete-message {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
+  text-align: center;
+}
+
+.retry-button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid currentColor;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+  &:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+}
+
 /* 開発モード限定のデバッグ表示（本番ビルドには含まれない） */
 .debug-count {
   position: fixed;
