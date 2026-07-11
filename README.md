@@ -3,7 +3,7 @@
 [![test](https://github.com/yama-shu/please-say-yes/actions/workflows/test.yml/badge.svg)](https://github.com/yama-shu/please-say-yes/actions/workflows/test.yml)
 [![lint](https://github.com/yama-shu/please-say-yes/actions/workflows/lint.yml/badge.svg)](https://github.com/yama-shu/please-say-yes/actions/workflows/lint.yml)
 
-**ボタンの主張が強すぎるサイト** — 「いいえ」を押すたびに「はい」ボタンがどんどん大きくなり、選択を迫る圧が強まっていく一発ネタ系 Web アプリ。
+**「はい」と言って** — 「いいえ」を押すたびに「はい」ボタンがどんどん大きくなり、選択を迫る圧が強まっていく一発ネタ系 Web アプリ（通称: ボタンの主張が強すぎるサイト）。
 
 ## これは何？
 
