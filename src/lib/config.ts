@@ -38,6 +38,3 @@ export const yesButtonGrowth: GrowthParams = {
   growthRate: envPositiveNumber(import.meta.env.VITE_YES_GROWTH_RATE, 1.4),
   maxRatio: envPositiveNumber(import.meta.env.VITE_YES_MAX_RATIO, 1),
 }
-
-// CI 検証用のダミー（次のコミットで削除）
-export const ciVerification = "double-quotes-violate-prettier-config"
