@@ -70,6 +70,7 @@ npm run format:check  # 整形済みかの検査のみ（CI 用）
 | `VITE_YES_INITIAL_RATIO` | 「はい」の初期サイズ（ビューポート比 0〜1） | 0.12                                     |
 | `VITE_YES_GROWTH_RATE`   | 1 押下ごとの拡大倍率（> 1）                 | 1.4                                      |
 | `VITE_YES_MAX_RATIO`     | 拡大の上限（ビューポート比。1 = 画面全体）  | 1                                        |
+| `VITE_TAUNT_STAGES`      | 煽り文言の段階（JSON 配列）                 | 4 段階（.env.example 参照）              |
 
 設定方法は 2 通りです（詳細は [.env.example](.env.example) を参照）:
 

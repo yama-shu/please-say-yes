@@ -1,3 +1,4 @@
+import type { TauntStage } from './taunt'
 import type { GrowthParams } from './yesButtonSize'
 
 /**
@@ -38,3 +39,46 @@ export const yesButtonGrowth: GrowthParams = {
   growthRate: envPositiveNumber(import.meta.env.VITE_YES_GROWTH_RATE, 1.4),
   maxRatio: envPositiveNumber(import.meta.env.VITE_YES_MAX_RATIO, 1),
 }
+
+/** 煽り文言の段階（しきい値は #10 の決定。デフォルト係数では 7 回で上限到達） */
+const defaultTauntStages: TauntStage[] = [
+  { count: 2, text: '本当に？' },
+  { count: 4, text: '考え直してほしい' },
+  { count: 6, text: '悪いことは言わないから' },
+  { count: 7, text: 'もう逃げられないよ？' },
+]
+
+/**
+ * 環境変数（JSON 文字列）から煽り段階を読む。
+ * 不正な JSON・形式違い・空配列はデフォルトにフォールバックする。
+ */
+function envTauntStages(
+  value: string | undefined,
+  fallback: TauntStage[],
+): TauntStage[] {
+  if (value === undefined) return fallback
+  try {
+    const parsed: unknown = JSON.parse(value)
+    if (
+      Array.isArray(parsed) &&
+      parsed.length > 0 &&
+      parsed.every(
+        (stage): stage is TauntStage =>
+          typeof stage === 'object' &&
+          stage !== null &&
+          typeof (stage as TauntStage).count === 'number' &&
+          typeof (stage as TauntStage).text === 'string',
+      )
+    ) {
+      return parsed
+    }
+  } catch {
+    // JSON.parse 失敗時もフォールバックに落とす
+  }
+  return fallback
+}
+
+export const tauntStages: TauntStage[] = envTauntStages(
+  import.meta.env.VITE_TAUNT_STAGES,
+  defaultTauntStages,
+)
