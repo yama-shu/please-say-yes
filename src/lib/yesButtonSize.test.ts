@@ -15,7 +15,8 @@ const params: GrowthParams = {
 
 describe('calcYesButtonRatio', () => {
   it('押下 0 回では初期サイズを返す', () => {
-    expect(calcYesButtonRatio(0, params)).toBe(params.initialRatio)
+    // CI 検証用にわざと誤った期待値にしている（次のコミットで戻す）
+    expect(calcYesButtonRatio(0, params)).toBe(999)
   })
 
   it('1 押下ごとに growthRate 倍で拡大する', () => {
